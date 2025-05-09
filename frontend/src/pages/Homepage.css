@@ -1,0 +1,126 @@
+/* Homepage.css */
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #f9f9f9, #e3f2fd, #f9f9f9, #e3f2fd);
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+  }
+  
+  .homepage-content {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .welcome-heading {
+    font-size: 2.5rem;
+    color: #001f3f; /* Navy blue */
+    margin-bottom: 10px;
+    animation: slideIn 1.5s ease-in-out;
+  }
+  
+  .welcome-text {
+    font-size: 1.2rem;
+    color: #333;
+    animation: slideIn 2s ease-in-out;
+  }
+  
+  .action-text {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 20px;
+    animation: slideIn 2.5s ease-in-out;
+  }
+  
+  .products-link {
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .products-link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Daily Vegetable Costs Section */
+  .vegetable-costs {
+    margin-top: 30px;
+    animation: slideIn 3s ease-in-out;
+  }
+  
+  .section-heading {
+    font-size: 2rem;
+    color: #001f3f; /* Navy blue */
+    margin-bottom: 15px;
+  }
+  
+  .cost-table {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cost-table th,
+  .cost-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .cost-table th {
+    background-color: #001f3f; /* Navy blue */
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .cost-table td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cost-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .cost-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Keyframes for animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }

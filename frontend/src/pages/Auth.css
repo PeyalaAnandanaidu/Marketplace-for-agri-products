@@ -1,0 +1,130 @@
+/* Auth.css */
+.auth-page {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('../assets/farm1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Required for pseudo-element positioning */
+}
+
+/* Pseudo-element to reduce background opacity */
+.auth-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Ensure it's above the background but below the form */
+}
+
+.auth-page .auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative; /* Ensure the form is above the overlay */
+  z-index: 2; /* Place the form above the pseudo-element */
+}
+
+.auth-page .auth-card {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); /* Blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Light border for contrast */
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-page .auth-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #0e0d0d; /* White text for better contrast */
+  margin-bottom: 1.5rem;
+}
+
+.auth-page .form-label {
+  font-weight: 500;
+  color: #080808; /* White text for better contrast */
+}
+
+.auth-page .form-control {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  color: #050505; /* White text */
+  transition: border-color 0.3s ease;
+}
+
+.auth-page .form-control::placeholder {
+  color: rgba(17, 17, 17, 0.7); /* Semi-transparent placeholder */
+}
+
+.auth-page .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on focus */
+}
+
+.auth-page .auth-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  color: #080808;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.auth-page .auth-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0056b3, #007bff);
+}
+
+.auth-page .auth-link {
+  text-align: center;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.8); /* Semi-transparent text */
+}
+
+.auth-page .auth-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.auth-page .auth-link a:hover {
+  color: #0056b3;
+}
+
+.auth-page .alert {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  color: #fff; /* White text */
+}

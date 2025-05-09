@@ -1,0 +1,77 @@
+# =======================
+# Node.js (backend)
+# =======================
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables
+.env
+
+# Coverage directory (Jest testing)
+coverage/
+
+# Build output (backend)
+dist/
+build/
+
+# =======================
+# React (frontend)
+# =======================
+
+# dependencies
+/frontend/node_modules/
+
+# production build
+/frontend/build
+
+# misc
+frontend/.DS_Store
+
+# local env files
+frontend/.env
+
+# Log files
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Editor directories and files
+frontend/.idea/
+frontend/.vscode/
+frontend/*.sublime-workspace
+frontend/*.sublime-project
+
+# Mac system files
+.DS_Store
+Thumbs.db
+
+# =======================
+# Optional
+# =======================
+
+# VSCode settings (optional)
+.vscode/
+
+# Optional npm cache directory
+.npm/
+
+# Debug
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Misc
+*.tgz
