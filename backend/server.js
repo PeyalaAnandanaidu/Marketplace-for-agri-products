@@ -1,3 +1,4 @@
+// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -5,6 +6,7 @@ const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
+const serverless = require('serverless-http');  // <-- ADD THIS
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/products');
 
@@ -54,12 +56,12 @@ app.use(passport.session());
 app.use('/api/products', productRoutes);
 app.use('/api/auth', require('./routes/auth'));
 
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ❌ REMOVE app.listen()
+// ✅ Instead export serverless handler
+module.exports = serverless(app);
