@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       console.log('Sending login request...');
-      const res = await axios.post('marketplace-for-agri-products-qleb.vercel.app/auth/login', { email, password });
+      const res = await axios.post('marketplace-for-agri-products.vercel.app/api/auth/login', { email, password });
       console.log('Login response:', res.data);
       localStorage.setItem('token', res.data.token);
       setSuccess(true);
@@ -31,7 +31,7 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     // Redirect to backend Google OAuth endpoint
-    window.location.href = 'marketplace-for-agri-products-qleb.vercel.app/auth/google';
+    window.location.href = 'marketplace-for-agri-products.vercel.app/api/auth/google';
   };
 
   return (
