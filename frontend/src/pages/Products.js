@@ -39,7 +39,7 @@ const FarmerProducts = ({ farmerId }) => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/products`);
+      const response = await axios.get(`https://marketplace-for-agri-products-backend.onrender.com/api/products`);
       setProducts(response.data);
       setError(null);
     } catch (err) {
@@ -94,7 +94,7 @@ const FarmerProducts = ({ farmerId }) => {
         farmerId
       };
       
-      const response = await axios.post('http://localhost:5000/api/products', productToAdd);
+      const response = await axios.post('https://marketplace-for-agri-products-backend.onrender.com/api/products', productToAdd);
       
       setProducts([...products, response.data]);
       setNewProduct({
