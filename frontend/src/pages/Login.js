@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
-import { FaGoogle } from 'react-icons/fa'; // Import Google icon
-import './Auth.css'; // Import the shared CSS file
-
+import { FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../context/AuthContext'; // import context
+import './Auth.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,25 +12,31 @@ const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // use login method from context
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
-      console.log('Sending login request...');
-      const res = await axios.post('https://marketplace-for-agri-products-backend.onrender.com/api/auth/login', { email, password });
-      console.log('Login response:', res.data);
-      localStorage.setItem('token', res.data.token);
+      const res = await axios.post('https://marketplace-for-agri-products-backend.onrender.com/api/auth/login', {
+        email,
+        password
+      });
+
+      const token = res.data.token;
+      localStorage.setItem('token', token);
+      login(token); // set user in context
       setSuccess(true);
-      navigate('/farmer'); 
+      navigate('/farmer');
     } catch (err) {
       console.error('Login error:', err.response ? err.response.data : err.message);
-      setError('Invalid credentials');
+      const message = err.response?.data?.message || 'Invalid credentials';
+      setError(message);
       setSuccess(false);
     }
   };
 
   const handleGoogleLogin = () => {
-    // Redirect to backend Google OAuth endpoint
     window.location.href = 'https://marketplace-for-agri-products-backend.onrender.com/api/auth/google';
   };
 
@@ -39,12 +45,10 @@ const Login = () => {
       <Container className="auth-container">
         <Card className="auth-card">
           <h2 className="auth-title">Login</h2>
+
           {error && <Alert variant="danger">{error}</Alert>}
-          {success && (
-            <Alert variant="success">
-              Login successful!
-            </Alert>
-          )}
+          {success && <Alert variant="success">Login successful!</Alert>}
+
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email</Form.Label>
@@ -52,7 +56,10 @@ const Login = () => {
                 type="email"
                 placeholder="Enter email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError('');
+                }}
                 required
               />
             </Form.Group>
@@ -63,14 +70,23 @@ const Login = () => {
                 type="password"
                 placeholder="Enter password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError('');
+                }}
                 required
               />
             </Form.Group>
-                <Button variant="primary" type="submit" className="auth-button w-100 mb-3">
-                Login
+
+            <Button variant="primary" type="submit" className="auth-button w-100 mb-3">
+              Login
+            </Button>
+
+            <Button variant="danger" onClick={handleGoogleLogin} className="w-100 mb-3">
+              <FaGoogle /> Login with Google
             </Button>
           </Form>
+
           <p className="auth-link">
             Don't have an account? <a href="/register">Register here</a>
           </p>
