@@ -1,9 +1,9 @@
 // context/AuthContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -30,5 +30,5 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { AuthProvider };
-export default AuthContext;
+// ✅ Add this hook to safely consume context
+export const useAuth = () => useContext(AuthContext);
