@@ -67,20 +67,6 @@ const Login = () => {
                 required
               />
             </Form.Group>
-
-            <Button variant="primary" type="submit" className="auth-button w-100 mb-3">
-              Login
-            </Button>
-
-            {/* Google OAuth Button */}
-            <Button 
-              variant="outline-danger" 
-              className="w-100 mb-3 d-flex align-items-center justify-content-center"
-              onClick={handleGoogleLogin}
-            >
-              <FaGoogle className="me-2" />
-              Continue with Google
-            </Button>
           </Form>
           <p className="auth-link">
             Don't have an account? <a href="/register">Register here</a>
