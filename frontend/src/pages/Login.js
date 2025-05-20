@@ -67,6 +67,9 @@ const Login = () => {
                 required
               />
             </Form.Group>
+                <Button variant="primary" type="submit" className="auth-button w-100 mb-3">
+                Login
+            </Button>
           </Form>
           <p className="auth-link">
             Don't have an account? <a href="/register">Register here</a>
