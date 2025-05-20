@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
     try {
       console.log('Sending registration request...');
-      const res = await axios.post('http://localhost:5000/api/auth/register', { name, email, password, role });
+      const res = await axios.post('https://marketplace-for-agri-products-backend.onrender.com/api/auth/register', { name, email, password, role });
       console.log('Registration response:', res.data);
       localStorage.setItem('token', res.data.token);
       navigate('/login');
