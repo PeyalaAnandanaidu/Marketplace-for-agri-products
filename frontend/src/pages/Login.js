@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { FaGoogle } from 'react-icons/fa';
-import { AuthContext } from '../context/AuthContext'; // import context
+import AuthContext from '../context/AuthContext'; // import context
 import './Auth.css';
 
 const Login = () => {
