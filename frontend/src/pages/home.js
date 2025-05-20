@@ -13,7 +13,7 @@ const Homepage = () => {
   useEffect(() => {
     const fetchVegetableCosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products'); // Adjust backend URL if deployed
+        const response = await fetch('https://marketplace-for-agri-products-backend.onrender.com/api/products'); // Adjust backend URL if deployed
         const data = await response.json();
         setVegetableCosts(data);
       } catch (error) {
