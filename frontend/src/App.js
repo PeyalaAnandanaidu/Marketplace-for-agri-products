@@ -21,11 +21,13 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/products" element={<FarmerProducts />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/about" element={<Checkout />} />
+        <Route path="/products" element={ <ProtectedRoute><FarmerProducts /></ProtectedRoute>} />
+        <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+        <Route path="/about" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         <Route path="/farmer" element={
+              <ProtectedRoute>
                 <Homepage />
+                </ProtectedRoute>
             } />
       </Routes>
     </Router>
