@@ -37,7 +37,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI,
+    mongoUrl: process.env.MONGODB_URI,
     collectionName: 'sessions'
   }),
   cookie: {
@@ -62,6 +62,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-// ❌ REMOVE app.listen()
-// ✅ Instead export serverless handler
-module.exports = serverless(app);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
