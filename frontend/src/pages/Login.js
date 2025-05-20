@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { FaGoogle } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext';// import context
+import { useAuth } from '../context/AuthContext'; 
 import './Auth.css';
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext); // use login method from context
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,8 +24,7 @@ const Login = () => {
       });
 
       const token = res.data.token;
-      localStorage.setItem('token', token);
-      login(token); // set user in context
+      login(token); // ✅ save token using context
       setSuccess(true);
       navigate('/farmer');
     } catch (err) {
@@ -82,9 +81,7 @@ const Login = () => {
               Login
             </Button>
 
-            <Button variant="danger" onClick={handleGoogleLogin} className="w-100 mb-3">
-              <FaGoogle /> Login with Google
-            </Button>
+           
           </Form>
 
           <p className="auth-link">
